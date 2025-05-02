@@ -3,11 +3,12 @@ import React from "react";
 const CarouselCard = () => {
   return (
     <>
-      <div className="">
-        <div className="card bg-base-100 w-96 shadow-sm">
+      <div className=" lg:flex">
+        
+        <div className="card bg-base-100 shadow-sm w-50 md:w-70 lg:w-96">
           <figure>
             <img
-              src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+              src="https://www.billboard.com/wp-content/uploads/2024/06/Eminem-press-credit-Travis-Shinn-2024-billboard-1548.jpg"
               alt="Shoes"
             />
           </figure>
