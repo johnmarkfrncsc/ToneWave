@@ -3,6 +3,7 @@ import React from "react";
 const CarouselCard = () => {
   return (
     <>
+    {/*Dummy data TODO:  */}
       <div className=" lg:flex">
         
         <div className="card bg-base-100 shadow-sm w-50 md:w-70 lg:w-96">
