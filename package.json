@@ -1,5 +1,23 @@
 {
-  "devDependencies": {
-    "daisyui": "^5.0.28"
+  "name": "tonewave",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix Tonewave-backend\" \"npm run dev --prefix Tonewave-frontend\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnmarkfrncsc/ToneWave.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnmarkfrncsc/ToneWave/issues"
+  },
+  "homepage": "https://github.com/johnmarkfrncsc/ToneWave#readme",
+  "description": "",
+  "dependencies": {
+    "concurrently": "^9.1.2"
   }
 }

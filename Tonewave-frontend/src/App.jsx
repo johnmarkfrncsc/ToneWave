@@ -11,7 +11,7 @@ function App() {
     <>
       <div>
         <Router>
-          <Sidebar/>
+          <Navbar/>
           <AppRoutes />
         </Router>
       </div>
