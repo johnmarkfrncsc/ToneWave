@@ -22,11 +22,14 @@ const Navbar = () => {
           scrolled ? "bg-black shadow-lg" : "bg-transparent"
         }`}
       >
+        {/* Left: Sidebar */}
         <div className="flex-none">
           <Sidebar />
         </div>
 
-        <div className="flex-1">
+        {/* Center: Logo and Search */}
+        <div className="flex-1 flex justify-between items-center w-full">
+          {/* Logo */}
           <Link
             to="/home"
             className="flex bg-transparent border-0 font-bold text-xl text-white"
@@ -46,10 +49,32 @@ const Navbar = () => {
             </svg>
             <span className="ml-2">Tonewave</span>
           </Link>
+
+          {/* Search bar: visible only on md and up */}
+          <div className="hidden md:flex flex-2 justify-center">
+            <label className="input input-bordered rounded-xl w-64 md:w-80 lg: lg:w-lg xl:w-xl xl:mr-10 text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="currentColor"
+                className="bi bi-search"
+                viewBox="0 0 16 16"
+              >
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+              </svg>
+              <input
+                type="text"
+                placeholder="Search songs, artist, albums and podcast"
+              />
+            </label>
+          </div>
         </div>
 
-        <div className="flex-none pr-7">
-          <button className="btn btn-square btn-ghost">
+        {/* Right: Search icon (mobile) + Avatar */}
+        <div className="flex-none flex items-center space-x-4">
+          {/* Mobile Search Icon */}
+          <button className="btn btn-square btn-ghost block md:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -61,6 +86,8 @@ const Navbar = () => {
               <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
             </svg>
           </button>
+
+          {/* Avatar */}
           <div className="avatar">
             <div className="w-8 rounded-full">
               <img src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp" />
@@ -68,8 +95,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
-      
     </>
   );
 };

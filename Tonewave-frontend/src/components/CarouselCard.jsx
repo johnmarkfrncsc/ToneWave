@@ -15,11 +15,7 @@ const CarouselCard = () => {
             />
           </figure>
           <div className="card-body bg-transparent">
-            <h2 className="card-title">Content Title Here</h2>
-            <p>
-              A card component has a figure, a body part, and inside body there
-              are title and actions parts
-            </p>
+            <h2 className="card">Content Title Here</h2>
           </div>
         </div>
       </div>

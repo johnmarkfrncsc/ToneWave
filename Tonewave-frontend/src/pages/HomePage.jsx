@@ -20,7 +20,7 @@ const HomePage = () => {
       <ChipHeader />
       <div className="px-5 bg-neutral-950">
         {/* FIXME: TODO:  P-20 in line 6 -> abang lang for next content in homepage */}
-        <h1 className="text-xl md:text-3xl lg:text-4xl font-bold pt-5 text-white">
+        <h1 className="text-xl md:text-3xl lg:text-4xl font-bold pt-5 md:ml-1 lg:ml-10 text-white">
           New releases
         </h1>
 
@@ -29,7 +29,7 @@ const HomePage = () => {
             {[...Array(6)].map((_, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-60 md:w-72 lg:w-96 text-white lg:p-10 p-6"
+                className="flex-shrink-0 w-60 md:w-72 lg:w-96 text-white p-1 lg:p-10 "
               >
                 <CarouselCard />
               </div>

@@ -4,22 +4,22 @@ const songs = [
     {
       title: "Lose My Mind (feat. Doja Cat)",
       artist: "Don Toliver",
-      image: "/images/song1.jpg",
+      image: "https://img.daisyui.com/images/profile/demo/yellingcat@192.webp",
     },
     {
       title: "Spend It",
       artist: "Summer Walker",
-      image: "/images/song2.jpg",
+      image: "https://img.daisyui.com/images/profile/demo/yellingcat@192.webp",
     },
     {
       title: "Old Phone",
       artist: "Ed Sheeran",
-      image: "/images/song3.jpg",
+      image: "https://img.daisyui.com/images/profile/demo/yellingcat@192.webp",
     },
     {
       title: "Better Than You",
       artist: "Briston Maroney",
-      image: "/images/song4.jpg",
+      image: "https://img.daisyui.com/images/profile/demo/yellingcat@192.webp",
     },
   ];
 
@@ -27,7 +27,7 @@ const MusicTracks = () => {
   return (
     
     <>
-     <div className="text-white px-4">
+     <div className="text-white md:ml-2 lg:ml-10">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-xl font-semibold">Latest Songs</h1>
         <span className="text-xl">›</span>
