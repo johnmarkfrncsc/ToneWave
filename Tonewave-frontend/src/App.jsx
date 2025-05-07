@@ -14,6 +14,10 @@ function App() {
 
           <Navbar/>
           <AppRoutes />
+
+
+          
+          
         </Router>
       </div>
     </>

@@ -52,7 +52,7 @@ const Navbar = () => {
 
           {/* Search bar: visible only on md and up */}
           <div className="hidden md:flex flex-2 justify-center">
-            <label className="input input-bordered rounded-xl w-64 md:w-80 lg: lg:w-lg xl:w-xl xl:mr-10 text-white">
+            <label className="input input-bordered rounded-xl w-64 md:w-80 lg: lg:w-lg xl:w-xl xl:mr-30 text-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"

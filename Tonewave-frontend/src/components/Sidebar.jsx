@@ -33,7 +33,7 @@ const Sidebar = () => {
             className="drawer-overlay"
           ></label>
 
-          <ul className="menu text-base-content min-h-full w-60 p-2 bg-black">
+          <ul className="menu text-base-content min-h-full w-60 p-2 bg-black  border-r-2 border-primary">
             <div className="flex items-center pl-2">
               <label
                 htmlFor="my-drawer"
@@ -95,9 +95,10 @@ const Sidebar = () => {
                   <path d="M8 16.016a7.5 7.5 0 0 0 1.962-14.74A1 1 0 0 0 9 0H7a1 1 0 0 0-.962 1.276A7.5 7.5 0 0 0 8 16.016m6.5-7.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0" />
                   <path d="m6.94 7.44 4.95-2.83-2.83 4.95-4.949 2.83 2.828-4.95z" />
                 </svg>
-                <li className="size-12 text-lg text-center pt-2.5 ">
-                  
-                  Explore</li>
+                <Link
+                to ="/explore">
+                <li className="size-12 text-lg text-center pt-2.5 ">Explore</li>
+                </Link>
               </div>
 
               <div className="flex items-center px-10">

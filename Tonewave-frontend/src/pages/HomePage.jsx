@@ -3,17 +3,9 @@ import CarouselCard from "../components/CarouselCard";
 import CarouselArrow from "../components/CarouselArrow";
 import MusicTracks from "../components/MusicTracks";
 import ChipHeader from "../components/ChipHeader";
-import { getHome } from "@hydralerne/youtube-api";
 
 const HomePage = () => {
-  useEffect(() => {
-    const fetchHome = async () => {
-      await getHome();
-    };
-
-    const homeData = fetchHome();
-    console.log(homeData);
-  }, []);
+  
 
   return (
     <>
@@ -21,7 +13,7 @@ const HomePage = () => {
       <div className="px-5 bg-neutral-950">
         {/* FIXME: TODO:  P-20 in line 6 -> abang lang for next content in homepage */}
         <h1 className="text-xl md:text-3xl lg:text-4xl font-bold pt-5 md:ml-1 lg:ml-10 text-white">
-          New releases
+          Start browsing
         </h1>
 
         <div className="">
