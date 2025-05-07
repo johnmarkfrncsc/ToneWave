@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import CarouselCard from "../components/CarouselCard";
 import CarouselArrow from "../components/CarouselArrow";
 import MoodCard from "../components/ExpPageComponent/MoodCard";
+import NewMVSection from "../components/ExpPageComponent/NewMVSection";
 
 const ExplorePage = () => {
   return (
@@ -78,13 +79,25 @@ const ExplorePage = () => {
           {/* TODO: FIXME:  need new file component for explore page */}
 
           <div className="pt-10">
-            <h1 className="text-lg font-bold">
-                Moods & genres
-            </h1>
-          <MoodCard/>
+            <h1 className="text-lg font-bold pb-2 ">Moods & genres</h1>
+            <MoodCard />
           </div>
-                
 
+          <div className="pt-10">
+            <h1 className="text-lg font-bold pb-3">New Music videos</h1>
+            <div>
+              <CarouselArrow>
+                {[...Array(6)].map((_, index) => (
+                  <div
+                    key={index}
+                    className="flex-shrink-0 w-60 md:w-72 lg:w-96 text-white p-1 lg:p-10 "
+                  >
+                    <NewMVSection />
+                  </div>
+                ))}
+              </CarouselArrow>
+            </div>
+          </div>
         </div>
       </div>
     </>

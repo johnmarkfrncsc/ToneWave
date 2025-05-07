@@ -1,43 +1,53 @@
-import React, { Children } from "react";
+import React from "react";
+
+const moodList = [
+  { text: "Chill", border: "border-blue-300" },
+  { text: "Commute", border: "border-primary" },
+  { text: "Engergy Booster", border: "border-amber-600" },
+  { text: "Feel good", border: "border-white" },
+  { text: "Focus", border: "border-secondary" },
+  { text: "Party", border: "border-teal-500" },
+  { text: "Romance", border: "border-error" },
+  { text: "Sad", border: "border-gray-500" },
+  { text: "Happy", border: "border-yellow-400" },
+  { text: "Lofi", border: "border-blue-300" },
+  { text: "Hiphop", border: "border-gray-700" },
+  { text: "Hiphop", border: "border-gray-700" },
+  
+];
+
+const moodCardGroup = (list) => {
+  const result = [];
+  for (let i = 0; i < list.length; i += 4) {
+    result.push(list.slice(i, i + 4));
+  }
+  return result;
+};
 
 const MoodCard = () => {
+  const groups = moodCardGroup(moodList);
+
   return (
-    <>
-      <div className="*:mt-2">
-        <div className="btn w-full bg-base-300  shadow-none p-4 border-l-4 border-0 border-blue-300 ">
-          Chill
-        </div>
-
-        <div className="btn w-full bg-base-300  shadow-none p-4 border-l-4 border-0 border-primary ">
-          Commute
-        </div>
-
-        <div className="btn w-full bg-base-300  shadow-none p-4 border-l-4 border-0 border-amber-600">
-          Engergy Booster
-        </div>
-
-        <div className="btn w-full bg-base-300  shadow-none p-4 border-l-4 border-0 border-white ">
-          Feel good
-        </div>
-
-        <div className="btn w-full bg-base-300  shadow-none p-4 border-l-4 border-0 border-secondary ">
-          Focus
-        </div>
-
-        <div className="btn w-full bg-base-300  shadow-none p-4 border-l-4 border-0 border-teal-500 ">
-          Party
-        </div>
-
-        <div className="btn w-full bg-base-300  shadow-none p-4 border-l-4 border-0 border-error ">
-          Romance
-        </div>
-
-        <div className="btn w-full bg-base-300  shadow-none p-4 border-l-4 border-0 border-gray-500 ">
-          Sad
-        </div>
+    <div className="overflow-x-auto overflow-y-hidden">
+      
+      <div className="flex gap-4 md:justify-center">
+        {groups.map((group, i) => (
+          <div key={i} className="flex flex-col gap-2 w-[200px] md:w-lg xl:w-lg">
+            {group.map((mood, j) => (
+              <div
+                key={j}
+                className={`btn w-full bg-base-300 shadow-none p-4 border-l-8 border-0  ${mood.border}`}
+              >
+                {mood.text}
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
-    </>
+    </div>
   );
 };
 
 export default MoodCard;
+
+
