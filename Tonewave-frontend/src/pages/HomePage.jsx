@@ -27,33 +27,64 @@ const HomePage = () => {
   return (
     <>
       <ChipHeader />
-      <div className="px-5 bg-base-100">
+      <div className="px-5 bg-base-100 min-h-screen">
         <h1 className="text-xl md:text-3xl lg:text-4xl font-bold pt-5 md:ml-1 lg:ml-10 text-white">
           Start browsing
         </h1>
 
+        {/*TODO: MODIFY THE LOADING SHIZ */}
         {loading ? (
           <p className="text-white">Loading...</p>
         ) : (
           <>
-            <pre className="text-white overflow-auto bg-gray-800 p-4 rounded-lg">
-              {JSON.stringify(homeData, null, 2)}
-            </pre>
+            {/* Picks Section */}
+            {homeData?.picks && (
+              <div className="mt-10 p-10">
+                <h2 className="text-2xl font-bold text-white mb-4">
+                  Your Picks
+                </h2>
+                <div className="flex flex-wrap gap-6 justify-start">
+                  {homeData.picks.map((item, index) => (
+                    <div
+                      key={index}
+                      className=" hover:scale-105 transition-all duration-300 w-64"
+                    >
+                      <img
+                        src={item.posterLarge || item.poster}
+                        alt={item.title}
+                        className="w-full h-40 object-cover rounded-t-xl"
+                      />
 
-            <div className="">
-              <CarouselArrow>
-                {[...Array(6)].map((_, index) => (
-                  <div
-                    key={index}
-                    className="flex-shrink-0 w-60 md:w-72 lg:w-96 text-white p-1 lg:p-10"
-                  >
-                    <CarouselCard />
-                  </div>
-                ))}
-              </CarouselArrow>
-            </div>
+                      <div className="p-4 flex flex-col justify-between h-48">
+                        <div>
+                          <h3 className="text-lg font-semibold text-gray-900">
+                            {item.title}
+                          </h3>
+                          <p className="text-sm text-gray-700">{item.artist}</p>
+                          <p className="text-xs text-gray-500 italic">
+                            {item.album}
+                          </p>
+                        </div>
+                        <div className="mt-4 flex justify-between items-center">
+                          <button className="bg-blue-600 text-white text-sm px-3 py-1 rounded-full hover:bg-blue-700 transition">
+                            ▶ Play
+                          </button>
+                          <a
+                            href="#"
+                            className="text-blue-500 text-sm hover:underline"
+                          >
+                            More details
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
-            <div>
+            {/* Music Tracks */}
+            <div className="mt-10">
               <MusicTracks />
             </div>
           </>
@@ -64,4 +95,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
