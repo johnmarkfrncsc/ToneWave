@@ -1,7 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
+  const location = useLocation();
+
+  const isActive = (path) => location.pathname === path;
+
   return (
     <>
       <div className="drawer">
@@ -64,40 +68,26 @@ const Sidebar = () => {
             </div>
 
             <div className="pt-5">
-
-              <div className="flex items-center px-10">
-                
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="currentColor"
-                  class="bi bi-house mr-2"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
-                </svg>
-                <Link
-                to ="/home">
-                <li className="size-12 text-lg text-center pt-2.5 ">Home</li>
+              <div className="flex items-center px-2 ">
+                <Link to="/home">
+                  <li
+                    className={`size-12 text-lg text-center pt-2.5 rounded ${
+                      isActive("/home") ? "bg-base-200 text-white w-50 " : "px-10"
+                    }`}
+                  >
+                    Home
+                  </li>
                 </Link>
               </div>
 
-              <div className="flex items-center px-10">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="currentColor"
-                  class="bi bi-compass mr-2"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M8 16.016a7.5 7.5 0 0 0 1.962-14.74A1 1 0 0 0 9 0H7a1 1 0 0 0-.962 1.276A7.5 7.5 0 0 0 8 16.016m6.5-7.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0" />
-                  <path d="m6.94 7.44 4.95-2.83-2.83 4.95-4.949 2.83 2.828-4.95z" />
-                </svg>
-                <Link
-                to ="/explore">
-                <li className="size-12 text-lg text-center pt-2.5 ">Explore</li>
+              <div className="flex items-center px-2">
+                <Link to="/explore">
+                  <li className={`size-12 text-lg text-center pt-2.5 rounded ${
+                      isActive("/explore") ? "bg-base-200 text-white w-50" : "px-10"
+                    }`}
+                  >
+                    Explore
+                  </li>
                 </Link>
               </div>
 

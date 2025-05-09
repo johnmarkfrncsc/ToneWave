@@ -36,7 +36,7 @@ const MoodCard = () => {
             {group.map((mood, j) => (
               <div
                 key={j}
-                className={`btn w-full bg-base-300 shadow-none p-4 border-l-8 border-0  ${mood.border}`}
+                className={`btn w-[200px] md:w-full bg-base-300 shadow-none p-4 border-l-8 border-0  ${mood.border}`}
               >
                 {mood.text}
               </div>

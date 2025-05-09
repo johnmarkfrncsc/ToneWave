@@ -1,12 +1,25 @@
 import express from "express";
+import cors from "cors";
+import { getHome } from "@hydralerne/youtube-api";
 
 const app = express();
-app.use(express.json());
+const PORT = 3000;
 
-app.get("/", (req, res) => {
-  res.json({ message: "API Example Route is working" });
+app.use(cors());
+
+app.get("/", async (req, res) => {
+  try {
+    const homeData = await getHome();
+    res.json(homeData);
+  } catch (error) {
+    res.status(500).send("Error fetching home data");
+  }
 });
 
-app.listen(3000, () => {
-  console.log("app is running on http://localhost:3000");
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
 });
+
+
+
+
