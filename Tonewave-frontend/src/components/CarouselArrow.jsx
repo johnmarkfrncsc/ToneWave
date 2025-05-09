@@ -1,65 +1,47 @@
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
 
-const CarouselArrow = ({ children }) => {
-  const scrollRef = useRef(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const childrenArray = React.Children.toArray(children);
-  const totalCards = childrenArray.length;
-
-  const scrollToCard = (index) => {
-    const container = scrollRef.current;
-    const card = container?.querySelectorAll(".carousel-card")[index];
-    if (card) {
-      card.scrollIntoView({ behavior: "smooth", inline: "center" });
-      setCurrentIndex(index);
+const CarouselArrow = ({ direction, targetId }) => {
+  const scroll = () => {
+    const container = document.getElementById(targetId);
+    if (container) {
+      const scrollAmount = 300;
+      container.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
     }
   };
 
-  const scrollLeft = () => {
-    const newIndex = currentIndex === 0 ? totalCards - 1 : currentIndex - 1;
-    scrollToCard(newIndex);
-  };
-
-  const scrollRight = () => {
-    const newIndex = currentIndex === totalCards - 1 ? 0 : currentIndex + 1;
-    scrollToCard(newIndex);
-  };
-
-  useEffect(() => {
-    scrollToCard(0);
-  }, []);
-
   return (
-    <div className="relative w-full overflow-hidden">
-      <div
-        ref={scrollRef}
-        className="flex snap-x snap-mandatory overflow-x-auto scroll-smooth no-scrollbar justify-start items-start"
-      >
-        {childrenArray.map((child, index) => (
-          <div key={index} className="flex-shrink-0 snap-center carousel-card">
-            {child}
-          </div>
-        ))}
-      </div>
-
-      <div className="absolute inset-y-1/2 left-0 right-0 hidden sm:flex justify-between px-2 pointer-events-none">
-        <button
-          onClick={scrollLeft}
-          className="btn btn-circle bg-neutral-600 opacity-50 text-white hover:text-black hover:bg-white pointer-events-auto"
+    <button
+      onClick={scroll}
+      className="btn btn-circle btn-sm bg-base-200 hover:bg-neutral-400 *:hover:fill-base-200"
+    >
+      {direction === "left" ? (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          fill="#FFFFFF"
         >
-          ❮
-        </button>
-        <button
-          onClick={scrollRight}
-          className="btn btn-circle bg-neutral-600 opacity-50 text-white hover:text-black hover:bg-white pointer-events-auto"
+          <path d="M0 0h24v24H0V0z" fill="none" />
+          <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
+        </svg>
+      ) : (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          fill="#FFFFFF"
         >
-          ❯
-        </button>
-      </div>
-    </div>
+          <path d="M0 0h24v24H0V0z" fill="none" />
+          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
+        </svg>
+      )}
+    </button>
   );
 };
 
 export default CarouselArrow;
-

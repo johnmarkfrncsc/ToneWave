@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import ChipHeader from "./ChipHeader";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +16,11 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleSearch = () => {
+    if (!searchQuery.trim()) return;
+    navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+  };
 
   return (
     <>
@@ -50,9 +57,9 @@ const Navbar = () => {
             <span className="ml-2">Tonewave</span>
           </Link>
 
-          {/* Search bar: visible only on md and up */}
+          {/* Search bar: visible only on md, lg and xl */}
           <div className="hidden md:flex flex-2 justify-center">
-            <label className="input input-bordered rounded-xl w-64 md:w-80 lg: lg:w-lg xl:w-xl xl:mr-30 text-white">
+            <label className="input input-bordered rounded-xl w-64 md:w-80 text-white flex items-center gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -65,8 +72,19 @@ const Navbar = () => {
               </svg>
               <input
                 type="text"
+                className="bg-transparent text-white outline-none w-full"
                 placeholder="Search songs, artist, albums and podcast"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleSearch();
+                  }
+                }}
               />
+              <button onClick={handleSearch} className="text-white">
+                🔍
+              </button>
             </label>
           </div>
         </div>

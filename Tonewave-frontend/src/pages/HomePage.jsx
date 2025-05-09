@@ -4,6 +4,7 @@ import CarouselArrow from "../components/CarouselArrow";
 import MusicTracks from "../components/MusicTracks";
 import ChipHeader from "../components/ChipHeader";
 
+
 const HomePage = () => {
   const [homeData, setHomeData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -28,9 +29,6 @@ const HomePage = () => {
     <>
       <ChipHeader />
       <div className="px-5 bg-base-100 min-h-screen">
-        <h1 className="text-xl md:text-3xl lg:text-4xl font-bold pt-5 md:ml-1 lg:ml-10 text-white">
-          Start browsing
-        </h1>
 
         {/*TODO: MODIFY THE LOADING SHIZ */}
         {loading ? (
@@ -38,50 +36,46 @@ const HomePage = () => {
         ) : (
           <>
             {/* Picks Section */}
-            {homeData?.picks && (
-              <div className="mt-10 p-10">
-                <h2 className="text-2xl font-bold text-white mb-4">
-                  Your Picks
-                </h2>
-                <div className="flex flex-wrap gap-6 justify-start">
+            <div className="mt-2">
+              <div className="flex justify-between items-center mb-2">
+                <h2 className="text-xl md:text-3xl lg:text-4xl font-bold md:ml-1 lg:ml-10 text-white py-10">Start browsing</h2>
+                <div className="flex gap-5">
+                  <CarouselArrow direction="left" targetId="picks-carousel" />
+                  <CarouselArrow direction="right" targetId="picks-carousel" />
+                </div>
+              </div>
+
+              <div className="relative px-10">
+                <div
+                  id="picks-carousel"
+                  className="flex gap-6 overflow-x-auto overflow-y-hidden scroll-smooth "
+                >
                   {homeData.picks.map((item, index) => (
                     <div
                       key={index}
-                      className=" hover:scale-105 transition-all duration-300 w-64"
+                      className="min-w-[12rem] p-2.5 hover:bg-base-300 hover:rounded-lg"
                     >
                       <img
                         src={item.posterLarge || item.poster}
+                        onError={(e) => {
+                          if (e.target.src !== item.poster) {
+                            e.target.src = item.poster;
+                          }
+                        }}
                         alt={item.title}
-                        className="w-full h-40 object-cover rounded-t-xl"
+                        className="w-full h-40 rounded-lg object-cover"
                       />
-
-                      <div className="p-4 flex flex-col justify-between h-48">
-                        <div>
-                          <h3 className="text-lg font-semibold text-gray-900">
-                            {item.title}
-                          </h3>
-                          <p className="text-sm text-gray-700">{item.artist}</p>
-                          <p className="text-xs text-gray-500 italic">
-                            {item.album}
-                          </p>
-                        </div>
-                        <div className="mt-4 flex justify-between items-center">
-                          <button className="bg-blue-600 text-white text-sm px-3 py-1 rounded-full hover:bg-blue-700 transition">
-                            ▶ Play
-                          </button>
-                          <a
-                            href="#"
-                            className="text-blue-500 text-sm hover:underline"
-                          >
-                            More details
-                          </a>
-                        </div>
+                      <div className="flex flex-col justify-between">
+                        <h3 className="text-lg font-semibold text-white">
+                          {item.title}
+                        </h3>
+                        <p className="text-sm text-white">{item.artist}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
-            )}
+            </div>
 
             {/* Music Tracks */}
             <div className="mt-10">

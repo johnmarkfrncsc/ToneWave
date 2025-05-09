@@ -1,27 +1,24 @@
-import { useState } from 'react'
-import{ BrowserRouter as Router } from 'react-router-dom'
-import AppRoutes from './components/Routes'
-import './App.css'
-import Navbar from './components/Navbar'
+import { useState } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import AppRoutes from "./components/Routes";
+import "./App.css";
+import Navbar from "./components/Navbar";
 
 
 function App() {
-
   return (
     <>
       <div>
         <Router>
-
-          <Navbar/>
-          <AppRoutes />
-
-
           
-          
+            <Navbar />
+
+            <AppRoutes />
+
         </Router>
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
